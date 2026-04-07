@@ -1,11 +1,8 @@
 def simulasi_menunggu():
-    # Stok Laptop di meja operator (Terbatas!)
     stok_meja = 2
     
     mahasiswa = ["Andi", "Budi", "Citra", "Deni"]
-    # Laptop yang sudah dibawa mereka saat ini
     pinjam_sekarang = [1, 1, 2, 1] 
-    # Total laptop yang dibutuhkan supaya tugas selesai
     total_butuh = [6, 3, 5, 2]     
 
     selesai = [False] * len(mahasiswa)
@@ -14,7 +11,6 @@ def simulasi_menunggu():
     print(f"=== SIMULASI PINJAM LAPTOP (Stok Awal: {stok_meja}) ===")
     print("--------------------------------------------------")
 
-    # Kita lakukan pengecekan berulang sampai semua selesai
     while len(urutan_aman) < len(mahasiswa):
         ada_kemajuan = False
         
@@ -25,16 +21,13 @@ def simulasi_menunggu():
                 print(f"Cek {mahasiswa[i]}:")
                 print(f"  Butuh tambahan: {kekurangan} | Stok meja: {stok_meja}")
 
-                # KONDISI: Apakah stok di meja cukup?
                 if kekurangan <= stok_meja:
-                    # PROSES BERHASIL
                     stok_meja += pinjam_sekarang[i]
                     selesai[i] = True
                     urutan_aman.append(mahasiswa[i])
                     ada_kemajuan = True
                     print(f"  [✓] HASIL: CUKUP! {mahasiswa[i]} selesai. Stok meja jadi: {stok_meja}\n")
                 else:
-                    # PROSES MENUNGGU (BAGIAN YANG ANDA MINTA)
                     print(f"  [!] HASIL: KURANG! {mahasiswa[i]} HARUS MENUNGGU laptop lain balik.\n")
         
         if not ada_kemajuan:
